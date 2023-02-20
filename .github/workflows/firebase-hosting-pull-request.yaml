@@ -8,8 +8,20 @@ jobs:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: NPM Install and Build
+        uses: action/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+          cache-dependency-path: subdit/package-lock.json
+        run: npm ci
+        run: npm run build
+
+      - name: Firebase Deploy
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BRACKETS_4A972 }}'
