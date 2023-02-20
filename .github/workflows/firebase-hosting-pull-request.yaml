@@ -2,27 +2,31 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on PR
-'on': pull_request
+"on": pull_request
 jobs:
   build_and_preview:
-    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
+    if: "${{ github.event.pull_request.head.repo.full_name == github.repository }}"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: NPM Install and Build
+      - name: NPM Cache Setup
         uses: action/setup-node@v3
         with:
           node-version: 16
           cache: "npm"
           cache-dependency-path: subdit/package-lock.json
+
+      - name: NPM Install
         run: npm ci
+
+      - name: NPM Build
         run: npm run build
 
       - name: Firebase Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BRACKETS_4A972 }}'
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_BRACKETS_4A972 }}"
           projectId: brackets-4a972
