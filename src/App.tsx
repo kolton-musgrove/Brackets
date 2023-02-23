@@ -1,7 +1,11 @@
 import React from "react"
+import { Header } from "./components/header"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+
+const router = createBrowserRouter()
 
 function App() {
-  return <div className="text-center"></div>
+  return <Header />
 }
 
 export default App
