@@ -1,13 +1,21 @@
 import React from "react"
-import { AiFillPlusCircle } from "react-icons/ai"
+import { AiFillPlusCircle, AiFillEdit } from "react-icons/ai"
+import { BiArrowBack } from "react-icons/bi"
 
 export function IconButton(props: any) {
-  // TODO: Add more icons
   let icon = props.icon
 
   switch (props.icon) {
     case "plus":
       icon = <AiFillPlusCircle className="w-8 h-8" />
+      break
+
+    case "edit":
+      icon = <AiFillEdit className="w-8 h-8" />
+      break
+
+    case "back":
+      icon = <BiArrowBack className="w-8 h-8" />
       break
   }
 
