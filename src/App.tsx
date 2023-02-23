@@ -5,6 +5,7 @@ function App() {
   return (
     <>
       <Header
+        title="Brackets"
         rightIcon={{
           link: "",
           alt: "create bracket",

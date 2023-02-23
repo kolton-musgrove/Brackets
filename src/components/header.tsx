@@ -13,7 +13,7 @@ export function Header(props: any) {
         />
       )}
 
-      <h1 className="text-5xl mb-2">Brackets</h1>
+      <h1 className="text-5xl mb-2">{props.title}</h1>
 
       {props.rightIcon && (
         <IconButton
