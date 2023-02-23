@@ -1,10 +1,18 @@
 import React from "react"
 import { Header } from "./components/header"
-import { AiFillPlusCircle } from "react-icons/ai";
-
 
 function App() {
-  return (<><Header rightIcon={{link: "", icon:AiFillPlusCircle}}/> <AiFillPlusCircle></AiFillPlusCircle></>)
+  return (
+    <>
+      <Header
+        rightIcon={{
+          link: "",
+          alt: "create bracket",
+          icon: "plus"
+        }}
+      />
+    </>
+  )
 }
 
 export default App
