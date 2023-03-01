@@ -20,8 +20,10 @@ export function IconButton(props: any) {
   }
 
   return (
-    <button className={props.className} onClick={props.link}>
-      {icon}
-    </button>
+    <a href={props.link}>
+      <button className={props.className} onClick={props.link}>
+        {icon}
+      </button>
+    </a>
   )
 }

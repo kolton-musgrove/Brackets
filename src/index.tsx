@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { Home, Bracket, CreateBracket, EditBracket } from "./pages"
+import { Home, Bracket, CreateBracket } from "./pages"
 import "./index.css"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
