@@ -17,7 +17,7 @@ export function Header(props: any) {
 
       {props.rightIcon && (
         <IconButton
-          className="absolute right-0 mr-2"
+          className="absolute right-2 top-3"
           link={props.rightIcon.link}
           icon={props.rightIcon.icon}
           alt={props.rightIcon.alt}
