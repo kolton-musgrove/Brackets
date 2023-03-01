@@ -7,7 +7,7 @@ export function Home() {
       <Header
         title="Brackets"
         rightIcon={{
-          link: "",
+          link: "/",
           alt: "create bracket",
           icon: "plus"
         }}

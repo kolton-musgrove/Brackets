@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { Home, Bracket } from "./pages"
+import { Home, Bracket, CreateBracket, EditBracket } from "./pages"
 import "./index.css"
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
 
@@ -16,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/brackets/:id",
     element: <Bracket />
+  },
+  {
+    path: "/brackets/create",
+    element: <CreateBracket />
   }
 ])
 
