@@ -3,7 +3,7 @@ import { IconButton } from "./icon-button"
 
 export function Header(props: any) {
   return (
-    <header className="border-b-4 border-black flex flex-auto justify-center items-center">
+    <header className="border-b-4 text-white font-bold border-black flex flex-auto justify-center items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
       {props.leftIcon && (
         <IconButton
           className="absolute left-0 ml-2"
