@@ -3,7 +3,7 @@ import { IconButton } from "./icon-button"
 
 export function Header(props: any) {
   return (
-    <header className="border-b-4 text-white font-bold border-black flex flex-auto justify-center items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+    <header className="flex flex-auto items-center justify-center border-b-4 border-black bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 font-bold text-white">
       {props.leftIcon && (
         <IconButton
           className="absolute left-0 ml-2"
@@ -13,7 +13,7 @@ export function Header(props: any) {
         />
       )}
 
-      <h1 className="text-5xl mb-2">{props.title}</h1>
+      <h1 className="mb-2 text-5xl">{props.title}</h1>
 
       {props.rightIcon && (
         <IconButton

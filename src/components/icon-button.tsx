@@ -7,7 +7,9 @@ export function IconButton(props: any) {
 
   switch (props.icon) {
     case "plus":
-      icon = <AiFillPlusCircle className="w-8 h-8 hover:text-gray-200 hover:scale-125" />
+      icon = (
+        <AiFillPlusCircle className="w-8 h-8 hover:text-gray-200 hover:scale-125" />
+      )
       break
 
     case "edit":

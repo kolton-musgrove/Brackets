@@ -12,10 +12,8 @@ export type BracketSchema = {
   lastModifiedDate: Iso.Instant
 }
 
-export function Bracket() {
+export function Bracket({ match, location, history }: any) {
   const { id } = useParams()
-
-  console.log(id)
 
   return (
     <>

@@ -2,30 +2,17 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import { Home, Bracket, CreateBracket } from "./pages"
 import "./index.css"
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />
-  },
-  {
-    path: "/brackets",
-    element: <Home />
-  },
-  {
-    path: "/brackets/:id",
-    element: <Bracket />
-  },
-  {
-    path: "/brackets/create",
-    element: <CreateBracket />
-  }
-])
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/brackets" element={<Bracket />} />
+        <Route path="/brackets/create" element={<CreateBracket />} />
+      </Routes>
+    </Router>
   </React.StrictMode>
 )

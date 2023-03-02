@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'bitter': ['"Regular 400"', 'cursive'],
-      },
-    },
+        bitter: ['"Regular 400"', "cursive"]
+      }
+    }
   },
-  plugins: []
+  plugins: [require("prettier-plugin-tailwindcss")]
 }
