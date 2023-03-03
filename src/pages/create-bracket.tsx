@@ -39,8 +39,7 @@ export function CreateBracket() {
     const params = { id: Bracket.id }
 
     navigate({
-      pathname: "/brackets",
-      search: `?${createSearchParams(params)}`
+      pathname: `/teams/${Bracket.id}`,
     })
   }
 
