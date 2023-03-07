@@ -12,6 +12,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/brackets/:id" element={<Bracket />} />
         <Route path="/brackets/create" element={<CreateBracket />} />
+        <Route path="/brackets/:id/:round" element={<Bracket/>}/>
       </Routes>
     </Router>
   </React.StrictMode>
