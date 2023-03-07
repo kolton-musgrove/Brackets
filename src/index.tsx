@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
-import { Home, Bracket, CreateBracket } from "./pages"
+import { Home, Bracket, CreateBracket, Teams } from "./pages"
 import "./index.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
@@ -12,6 +12,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/brackets/:id" element={<Bracket />} />
         <Route path="/brackets/create" element={<CreateBracket />} />
+        <Route path="/teams/:id" element={<Teams />} />
       </Routes>
     </Router>
   </React.StrictMode>
