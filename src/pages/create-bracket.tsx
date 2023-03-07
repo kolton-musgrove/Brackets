@@ -37,9 +37,7 @@ export function CreateBracket() {
 
     localStorage.setItem(Bracket.id, JSON.stringify(Bracket))
 
-    navigate({
-      pathname: `/teams/${Bracket.id}`
-    })
+    navigate({ pathname: `/teams/${Bracket.id}` })
   }
 
   return (

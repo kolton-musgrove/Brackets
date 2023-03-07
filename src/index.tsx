@@ -10,9 +10,9 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/brackets/:id" element={<Bracket />} />
-        <Route path="/brackets/create" element={<CreateBracket />} />
         <Route path="/teams/:id" element={<Teams />} />
+        <Route path="/brackets/:id/:round" element={<Bracket />} />
+        <Route path="/brackets/create" element={<CreateBracket />} />
       </Routes>
     </Router>
   </React.StrictMode>
