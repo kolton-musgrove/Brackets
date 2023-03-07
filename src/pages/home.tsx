@@ -19,19 +19,19 @@ export function Home() {
       />
 
       {brackets.length === 0 && (
-        <div className="flex w-full h-full justify-center text-center">
-          <h1 className="text-2xl font-bold font-sans pt-6">
+        <div className="flex h-full w-full justify-center text-center">
+          <h1 className="pt-6 font-sans text-2xl font-bold">
             No brackets found. <br />
             Click the plus icon to create a new bracket.
           </h1>
         </div>
       )}
 
-      <div className="flex flex-col items-center justify-center w-full h-full">
+      <div className="flex h-full w-full flex-col items-center justify-center">
         {brackets.map((bracket: BracketSchema) => (
           <div
             key={bracket.id}
-            className="flex flex-col items-center justify-center w-full h-full">
+            className="flex h-full w-full flex-col items-center justify-center">
             <h1 className="text-2xl font-bold">{bracket.name}</h1>
           </div>
         ))}

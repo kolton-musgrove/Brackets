@@ -10,7 +10,7 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/brackets" element={<Bracket />} />
+        <Route path="/brackets/:id" element={<Bracket />} />
         <Route path="/brackets/create" element={<CreateBracket />} />
       </Routes>
     </Router>

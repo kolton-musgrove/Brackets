@@ -1,6 +1,8 @@
 import React from "react"
-import { AiFillPlusCircle, AiFillEdit } from "react-icons/ai"
+import { AiFillPlusCircle } from "react-icons/ai"
 import { BiArrowBack } from "react-icons/bi"
+import { BsFillShareFill } from "react-icons/bs"
+import { HiHome } from "react-icons/hi"
 
 export function IconButton(props: any) {
   let icon = props.icon
@@ -8,16 +10,20 @@ export function IconButton(props: any) {
   switch (props.icon) {
     case "plus":
       icon = (
-        <AiFillPlusCircle className="w-8 h-8 hover:text-gray-200 hover:scale-125" />
+        <AiFillPlusCircle className="h-8 w-8 hover:scale-125 hover:text-gray-200" />
       )
       break
 
-    case "edit":
-      icon = <AiFillEdit className="w-8 h-8" />
+    case "share":
+      icon = <BsFillShareFill className="h-8 w-8" />
       break
 
     case "back":
-      icon = <BiArrowBack className="w-8 h-8" />
+      icon = <BiArrowBack className="h-8 w-8" />
+      break
+
+    case "home":
+      icon = <HiHome className="white h-8 w-8" />
       break
   }
 

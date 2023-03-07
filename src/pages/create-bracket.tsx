@@ -5,7 +5,7 @@ import { BiPlusCircle, BiMinusCircle } from "react-icons/bi"
 import { BracketSchema } from "./bracket"
 import { v4 as uuid } from "uuid"
 import { instantFns } from "iso-fns2"
-import { useNavigate, createSearchParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import assert from "assert"
 
 export function CreateBracket() {
@@ -29,6 +29,7 @@ export function CreateBracket() {
       Bracket.teams.push({
         id: uuid(),
         name: data[key],
+        numWins: 0,
         createdDate: instantFns.now(),
         lastModifiedDate: instantFns.now()
       })
@@ -36,11 +37,8 @@ export function CreateBracket() {
 
     localStorage.setItem(Bracket.id, JSON.stringify(Bracket))
 
-    const params = { id: Bracket.id }
-
     navigate({
-      pathname: "/brackets",
-      search: `?${createSearchParams(params)}`
+      pathname: `/brackets/${Bracket.id}`
     })
   }
 
