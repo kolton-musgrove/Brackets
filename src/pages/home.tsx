@@ -3,9 +3,19 @@ import { Header } from "../components"
 import { BracketSchema } from "./bracket"
 
 export function Home() {
-  const brackets: BracketSchema[] = localStorage.getItem("brackets")
-    ? JSON.parse(localStorage.getItem("brackets")!)
+  const bracketIdList: BracketSchema["id"][] = localStorage.getItem(
+    "bracket-list"
+  )
+    ? JSON.parse(localStorage.getItem("bracket-list")!)
     : []
+
+  console.log(bracketIdList)
+
+  const brackets = bracketIdList.map((id: BracketSchema["id"]) => {
+    const bracket = localStorage.getItem(id)
+    console.log(bracket)
+    return bracket ? JSON.parse(bracket) : null
+  })
 
   return (
     <>
@@ -32,7 +42,9 @@ export function Home() {
           <div
             key={bracket.id}
             className="flex h-full w-full flex-col items-center justify-center">
-            <h1 className="text-2xl font-bold">{bracket.name}</h1>
+            <a href={`/teams/${bracket.id}`}>
+              <h1 className="text-2xl font-bold">{bracket.name}</h1>
+            </a>
           </div>
         ))}
       </div>

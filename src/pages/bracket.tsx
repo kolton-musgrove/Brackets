@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom"
 import { Header } from "../components"
 import { TeamSchema } from "../components/team"
 
-
 export type BracketSchema = {
   id: string
   name: string
@@ -14,9 +13,9 @@ export type BracketSchema = {
 }
 
 export function Bracket() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const { id, round } = useParams()
+  const { id } = useParams()
   assert.ok(id, "id is required")
 
   const bracket = JSON.parse(
@@ -24,9 +23,7 @@ export function Bracket() {
   ) as BracketSchema
   assert.ok(bracket, "bracket does not exist")
 
-  const teamsCount = bracket.teams.length
-
-  const findNumberOfRounds = (num: number): { i: number, power: number } => {
+  const findNumberOfRounds = (num: number): { i: number; power: number } => {
     let i = 1
     while (num > 2 ** i) {
       i++
@@ -34,8 +31,8 @@ export function Bracket() {
     return { i, power: 2 ** i }
   }
 
+  const teamsCount = bracket.teams.length
   const roundInfo = findNumberOfRounds(teamsCount)
-
   const extraGames = teamsCount - roundInfo.power
 
   return (
@@ -56,22 +53,29 @@ export function Bracket() {
       {/* bracket round selector */}
       <div>
         {[...Array(findNumberOfRounds(teamsCount))].map((item, index) => {
-          return <button onClick={() => navigate(`/brackets/${id}/${index}`)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Round {index}</button>
+          return (
+            <button
+              onClick={() => navigate(`/brackets/${id}/${index}`)}
+              className="rounded-full bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700">
+              Round {index}
+            </button>
+          )
         })}
       </div>
+      {/* round matchups */}
       {[...Array(extraGames)].map(() => {
-        {/* round matchups */ }
-        <div>
-          {/* matchup */}
+        return (
           <div>
-            {/* team 1 */}
-            <div></div>
-            {/* team 2 */}
-            <div></div>
+            {/* matchup */}
+            <div>
+              {/* team 1 */}
+              <div></div>
+              {/* team 2 */}
+              <div></div>
+            </div>
           </div>
-        </div>
+        )
       })}
-
     </>
   )
 }

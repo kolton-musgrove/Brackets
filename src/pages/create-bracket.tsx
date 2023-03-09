@@ -6,6 +6,7 @@ import { BracketSchema } from "./bracket"
 import { v4 as uuid } from "uuid"
 import { instantFns } from "iso-fns2"
 import { useNavigate } from "react-router-dom"
+import { updateBracketList } from "../utils"
 import assert from "assert"
 
 export function CreateBracket() {
@@ -36,6 +37,7 @@ export function CreateBracket() {
     })
 
     localStorage.setItem(Bracket.id, JSON.stringify(Bracket))
+    updateBracketList(Bracket)
 
     navigate({ pathname: `/teams/${Bracket.id}` })
   }

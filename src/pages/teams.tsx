@@ -23,9 +23,14 @@ export function Teams() {
       <Header
         title={bracket.name}
         leftIcon={{
-          link: "/brackets/teams",
+          link: "/",
           alt: "back",
           icon: "back"
+        }}
+        rightIcon={{
+          link: `/brackets/${id}/0`,
+          alt: "start bracket",
+          icon: "play"
         }}
       />
 

@@ -1,7 +1,7 @@
 import React from "react"
 import { AiFillPlusCircle } from "react-icons/ai"
 import { BiArrowBack } from "react-icons/bi"
-import { BsFillShareFill } from "react-icons/bs"
+import { BsFillShareFill, BsFillPlayFill } from "react-icons/bs"
 import { HiHome } from "react-icons/hi"
 
 export function IconButton(props: any) {
@@ -24,6 +24,10 @@ export function IconButton(props: any) {
 
     case "home":
       icon = <HiHome className="white h-8 w-8" />
+      break
+
+    case "play":
+      icon = <BsFillPlayFill className="white h-8 w-8" />
       break
   }
 
