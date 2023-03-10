@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { Header } from "../components"
 import { Matchup, MatchupSchema } from "../components/matchup"
 import { TeamSchema } from "./teams"
+import { BracketService } from "../utils"
 
 export type BracketSchema = {
   id: string
@@ -20,16 +21,32 @@ type Round = {
 }
 
 export function Bracket() {
-  const { id } = useParams()
-  assert.ok(id, "id is required")
   const navigate = useNavigate()
+  const { id, round } = useParams()
+  assert.ok(id, "id is required")
+  assert.ok(round, "round is required")
 
   const [bracket, setBracket] = useState<BracketSchema>(
     JSON.parse(localStorage.getItem(id) as string) as BracketSchema
   )
 
-  function handleBracketChange(newBracket: BracketSchema) {
+  function updateMatchupOnBracket(newMatchup: MatchupSchema) {
+    const currentRound = Number(round)
+    const newBracket = { ...bracket }
+
+    newBracket.rounds[currentRound].matchups = bracket.rounds[
+      currentRound
+    ].matchups.map((matchup) => {
+      if (matchup.team1Id === newMatchup.team1Id) {
+        return newMatchup
+      }
+      return matchup
+    })
+
     setBracket(newBracket)
+    BracketService.updateBracket(newBracket)
+    assert.ok(id)
+    console.log(BracketService.getBracket(id))
   }
 
   const findNumberOfRounds = (num: number): { i: number; power: number } => {
@@ -71,12 +88,6 @@ export function Bracket() {
 
   const roundOneMatchups = generateRound0Matchups()
 
-  // const toggleWin = () => {
-  //   return
-  // }
-
-  // const handleNonzeroRound = () => {}
-
   return (
     <>
       <Header
@@ -107,20 +118,8 @@ export function Bracket() {
       {/* round matchups */}
       <div>
         {roundOneMatchups.map((matchup: MatchupSchema) => {
-          return (
-            <>
-              <Matchup onChange={handleBracketChange} matchup={matchup} />
-            </>
-          )
+          return <Matchup onChange={updateMatchupOnBracket} matchup={matchup} />
         })}
-
-        {/* matchup */}
-        <div>
-          {/* team 1 */}
-          <div></div>
-          {/* team 2 */}
-          <div></div>
-        </div>
       </div>
     </>
   )

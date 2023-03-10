@@ -43,6 +43,21 @@ function getAllBrackets(): BracketSchema[] | undefined {
   }
 }
 
+function getTeamInfo(teamId: string): TeamSchema | undefined {
+  const brackets = getAllBrackets()
+
+  if (brackets) {
+    const team = brackets
+      .map((b) => b.teams)
+      .flat()
+      .find((t) => t.id === teamId)
+
+    return team
+  } else {
+    return undefined
+  }
+}
+
 function updateBracket(newBracket: Partial<BracketSchema>): void {
   assert.ok(newBracket.id, "no bracket id provided")
   let unparsedBracket: string | null
@@ -101,6 +116,7 @@ export const BracketService = {
   createBracket,
   getBracket,
   getAllBrackets,
+  getTeamInfo,
   updateBracket,
   deleteBracket,
   updateTeam

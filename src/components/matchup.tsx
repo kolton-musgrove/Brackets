@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { TeamSchema } from "../pages/teams"
+import { BracketService } from "../utils"
 
 export type MatchupSchema = {
   team1Id: TeamSchema["id"]
@@ -7,7 +8,7 @@ export type MatchupSchema = {
   winningTeamId: TeamSchema["id"] | null
 }
 
-export function Matchup(props: any) {
+export function Matchup(props: { matchup: MatchupSchema; onChange: Function }) {
   const [winningTeamId, setWinningTeamId] =
     useState<MatchupSchema["winningTeamId"]>(null)
 
@@ -16,20 +17,22 @@ export function Matchup(props: any) {
     props.onChange({ ...props.matchup, winningTeamId })
   }
 
+  const team1 = BracketService.getTeamInfo(props.matchup.team1Id) as TeamSchema
+  const team2 = BracketService.getTeamInfo(props.matchup.team2Id) as TeamSchema
+
   return (
     <div>
       <button
-        onClick={() => toggleWinningTeam(props.team1.id)}
-        key={props.team1.id}
-        style={{ color: winningTeamId === props.team1.id ? "black" : "red" }}>
-        {props.team1.name}
+        onClick={() => toggleWinningTeam(team1.id)}
+        key={props.matchup.team1Id}
+        style={{ color: winningTeamId === team1.id ? "green" : "black" }}>
+        {team1.name}
       </button>
       <button
-        id={props.team2.id}
-        onClick={() => toggleWinningTeam(props.team2.id)}
-        key={props.team2.id}
-        style={{ color: winningTeamId === props.team2.id ? "black" : "red" }}>
-        {props.team2.name}
+        onClick={() => toggleWinningTeam(team2.id)}
+        key={team2.id}
+        style={{ color: winningTeamId === team2.id ? "green" : "black" }}>
+        {team2.name}
       </button>
     </div>
   )

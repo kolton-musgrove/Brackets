@@ -42,7 +42,7 @@ export function Home() {
                 className="cursor-pointer rounded bg-purple-400 py-0.5 px-5 text-gray-800 shadow-md"
                 type="button"
                 onClick={() => navigate(`/teams/${bracket.id}`)}>
-                View
+                Open
               </button>
             </li>
           ))}
