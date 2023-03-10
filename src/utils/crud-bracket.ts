@@ -2,6 +2,7 @@ import { BracketSchema } from "../pages/bracket"
 import assert from "assert"
 import { TeamSchema } from "../pages/teams"
 import { instantFns } from "iso-fns2"
+import { BracketListService } from "./crud-bracket-list"
 
 function createBracket(newBracket: BracketSchema) {
   localStorage.setItem(newBracket.id, JSON.stringify(newBracket))
@@ -21,6 +22,24 @@ function getBracket(id: string): BracketSchema | undefined {
     // if the bracket doesn't exist, return undefined
     console.log(error)
     return undefined
+  }
+}
+
+function getAllBrackets(): BracketSchema[] | undefined {
+  const bracketIdList = BracketListService.getBracketList()
+
+  if (bracketIdList && bracketIdList.length > 0) {
+    // @ts-ignore ts isn't smart enough to know that in this case bracketIdList is not undefined
+    const brackets: BracketSchema[] = bracketIdList.map(
+      (id: BracketSchema["id"]) => {
+        const bracket = getBracket(id)
+        return bracket
+      }
+    )
+
+    return brackets.length > 0 ? brackets : undefined
+  } else {
+    return []
   }
 }
 
@@ -81,6 +100,7 @@ function updateTeam(bracketId: string, team: Partial<TeamSchema>): void {
 export const BracketService = {
   createBracket,
   getBracket,
+  getAllBrackets,
   updateBracket,
   deleteBracket,
   updateTeam

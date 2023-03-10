@@ -1,18 +1,15 @@
 import React from "react"
 import { Header } from "../components"
 import { BracketSchema } from "./bracket"
+import { BracketService } from "../utils"
+import { useNavigate } from "react-router-dom"
+import assert from "assert"
 
 export function Home() {
-  const bracketIdList: BracketSchema["id"][] = localStorage.getItem(
-    "bracket-list"
-  )
-    ? JSON.parse(localStorage.getItem("bracket-list")!)
-    : []
+  const brackets = BracketService.getAllBrackets()
+  assert.ok(brackets, "brackets are required")
 
-  const brackets = bracketIdList.map((id: BracketSchema["id"]) => {
-    const bracket = localStorage.getItem(id)
-    return bracket ? JSON.parse(bracket) : null
-  })
+  const navigate = useNavigate()
 
   return (
     <>
@@ -34,16 +31,22 @@ export function Home() {
         </div>
       )}
 
-      <div className="flex h-full w-full flex-col items-center justify-center">
-        {brackets.map((bracket: BracketSchema) => (
-          <div
-            key={bracket.id}
-            className="flex h-full w-full flex-col items-center justify-center">
-            <a href={`/teams/${bracket.id}`}>
-              <h1 className="text-2xl font-bold">{bracket.name}</h1>
-            </a>
-          </div>
-        ))}
+      <div className="flex w-screen items-center justify-center">
+        <ul className="w-96">
+          {brackets.map((bracket: BracketSchema) => (
+            <li
+              className="m-2 inline-flex w-full justify-between rounded bg-white p-5 text-gray-800 shadow-md"
+              key={bracket.id}>
+              {bracket.name}
+              <button
+                className="cursor-pointer rounded bg-purple-400 py-0.5 px-5 text-gray-800 shadow-md"
+                type="button"
+                onClick={() => navigate(`/teams/${bracket.id}`)}>
+                View
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   )

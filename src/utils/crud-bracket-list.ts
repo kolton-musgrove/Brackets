@@ -2,7 +2,7 @@ import { BracketSchema } from "../pages/bracket"
 import assert from "assert"
 
 // returns the status of updating the bracket list
-function createOrUpdateBracketList(newBracket: BracketSchema) {
+function createOrUpdateBracketList(newBracket: BracketSchema): void {
   let unparsedBracketList: string | null
 
   try {
@@ -26,12 +26,12 @@ function createOrUpdateBracketList(newBracket: BracketSchema) {
   }
 }
 
-function getBracketList() {
-  const bracketList = localStorage.getItem("bracket-list")
-  return bracketList
+function getBracketList(): string[] | null {
+  const bracketIdList = localStorage.getItem("bracket-list")
+  return bracketIdList ? JSON.parse(bracketIdList) : null
 }
 
-function deleteBracketList() {
+function deleteBracketList(): void {
   localStorage.removeItem("bracket-list")
 }
 
