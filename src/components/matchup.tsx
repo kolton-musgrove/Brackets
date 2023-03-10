@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { TeamSchema } from "./team"
+import { TeamSchema } from "../pages/teams"
 
 export type MatchupSchema = {
   team1Id: TeamSchema["id"]
@@ -13,25 +13,22 @@ export function Matchup(props: any) {
 
   const toggleWinningTeam = (teamId: string) => {
     setWinningTeamId(teamId)
-    props.onChange({...props.matchup, winningTeamId})
+    props.onChange({ ...props.matchup, winningTeamId })
   }
-
 
   return (
     <div>
       <button
         onClick={() => toggleWinningTeam(props.team1.id)}
         key={props.team1.id}
-        style={{color:winningTeamId == props.team1.id ? "black" : "red"}}
-      >
+        style={{ color: winningTeamId === props.team1.id ? "black" : "red" }}>
         {props.team1.name}
       </button>
       <button
-      id={props.team2.id}
+        id={props.team2.id}
         onClick={() => toggleWinningTeam(props.team2.id)}
         key={props.team2.id}
-        style={{color:winningTeamId == props.team2.id ? "black" : "red"}}
-      >
+        style={{ color: winningTeamId === props.team2.id ? "black" : "red" }}>
         {props.team2.name}
       </button>
     </div>

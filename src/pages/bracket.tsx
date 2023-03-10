@@ -1,16 +1,16 @@
 import assert from "assert"
-import { instantFns, Iso } from "iso-fns2"
+import { Iso } from "iso-fns2"
 import { useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Header } from "../components"
 import { Matchup, MatchupSchema } from "../components/matchup"
-import { TeamSchema } from "../components/team"
+import { TeamSchema } from "./teams"
 
 export type BracketSchema = {
   id: string
   name: string
   teams: TeamSchema[]
-  round: Round[]
+  rounds: Round[]
   createdDate: Iso.Instant
   lastModifiedDate: Iso.Instant
 }
@@ -20,7 +20,7 @@ type Round = {
 }
 
 export function Bracket() {
-  const { id, round } = useParams()
+  const { id } = useParams()
   assert.ok(id, "id is required")
   const navigate = useNavigate()
 
@@ -28,7 +28,7 @@ export function Bracket() {
     JSON.parse(localStorage.getItem(id) as string) as BracketSchema
   )
 
-  function handleBracketChange (newBracket) {
+  function handleBracketChange(newBracket: BracketSchema) {
     setBracket(newBracket)
   }
 
@@ -51,10 +51,9 @@ export function Bracket() {
     while (numByes > 0) {
       matchups.push({
         team1Id: bracket.teams[teamIndex].id,
-        team2Id:"Bye",
+        team2Id: "Bye",
         winningTeamId: null
       })
-      console.log(matchups)
       numByes--
       teamIndex++
     }
@@ -72,17 +71,11 @@ export function Bracket() {
 
   const roundOneMatchups = generateRound0Matchups()
 
-  const toggleWin = () => {
-    return
-  }
+  // const toggleWin = () => {
+  //   return
+  // }
 
-  const handleNonzeroRound = () => {}
-
-  //calculate the number of teams in the first round to get to a power of two
-  const findNumberInFirstRound = (numRound: number) => {
-    const numFacilitated = 2 ** numRound / 2
-    return numFacilitated - (2 ** numRound - teamsCount)
-  }
+  // const handleNonzeroRound = () => {}
 
   return (
     <>
@@ -91,12 +84,12 @@ export function Bracket() {
         leftIcon={{
           link: "/",
           alt: "back",
-          icon: "home",
+          icon: "home"
         }}
         rightIcon={{
           link: "",
           alt: "share bracket",
-          icon: "share",
+          icon: "share"
         }}
       />
       {/* bracket round selector */}
@@ -105,8 +98,7 @@ export function Bracket() {
           return (
             <button
               onClick={() => navigate(`/brackets/${id}/${index}`)}
-              className="rounded-full bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700"
-            >
+              className="rounded-full bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700">
               Round {index}
             </button>
           )
@@ -117,7 +109,7 @@ export function Bracket() {
         {roundOneMatchups.map((matchup: MatchupSchema) => {
           return (
             <>
-              <Matchup onChange={handleBracketChange} matchup={matchup}/>
+              <Matchup onChange={handleBracketChange} matchup={matchup} />
             </>
           )
         })}

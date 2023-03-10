@@ -3,8 +3,17 @@ import { AiFillPlusCircle } from "react-icons/ai"
 import { BiArrowBack } from "react-icons/bi"
 import { BsFillShareFill, BsFillPlayFill } from "react-icons/bs"
 import { HiHome } from "react-icons/hi"
+import { useNavigate } from "react-router-dom"
 
 export function IconButton(props: any) {
+  const navigate = useNavigate()
+
+  const onClick = () => {
+    if (props.link) {
+      navigate(props.link)
+    }
+  }
+
   let icon = props.icon
 
   switch (props.icon) {
@@ -33,7 +42,7 @@ export function IconButton(props: any) {
 
   return (
     <a href={props.link}>
-      <button className={props.className} onClick={props.link}>
+      <button className={props.className} onClick={onClick}>
         {icon}
       </button>
     </a>

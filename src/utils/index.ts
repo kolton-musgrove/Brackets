@@ -1,3 +1,4 @@
-import { updateBracketList } from "./updateBracketList"
+import { BracketService } from "./crud-bracket"
+import { BracketListService } from "./crud-bracket-list"
 
-export { updateBracketList }
+export { BracketService, BracketListService }

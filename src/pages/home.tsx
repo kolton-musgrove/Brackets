@@ -9,11 +9,8 @@ export function Home() {
     ? JSON.parse(localStorage.getItem("bracket-list")!)
     : []
 
-  console.log(bracketIdList)
-
   const brackets = bracketIdList.map((id: BracketSchema["id"]) => {
     const bracket = localStorage.getItem(id)
-    console.log(bracket)
     return bracket ? JSON.parse(bracket) : null
   })
 
