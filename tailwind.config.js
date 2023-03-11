@@ -6,11 +6,9 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}"
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        bitter: ['"Regular 400"', "cursive"]
-      }
-    }
+    fontFamily: {
+      display: ["Lobster", "cursive"],
+    }, 
   },
   plugins: [require("prettier-plugin-tailwindcss")]
 }
