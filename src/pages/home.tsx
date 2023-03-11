@@ -39,7 +39,7 @@ export function Home() {
               key={bracket.id}>
               {bracket.name}
               <button
-                className="cursor-pointer rounded bg-purple-400 py-0.5 px-5 text-gray-800 shadow-md"
+                className="cursor-pointer rounded bg-purple-400 py-0.5 px-5 text-gray-800 shadow-md hover:bg-purple-600 hover:text-white hover:scale-110 transition-all"
                 type="button"
                 onClick={() => navigate(`/teams/${bracket.id}`)}>
                 Open

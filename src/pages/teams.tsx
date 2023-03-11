@@ -90,7 +90,7 @@ function Team(props: {
           key={props.key}>
           {teamName}
           <button
-            className="cursor-pointer rounded bg-purple-400 py-0.5 px-5 text-gray-800 shadow-md"
+            className="cursor-pointer rounded bg-purple-400 py-0.5 px-5 text-gray-800 shadow-md hover:bg-purple-600 hover:text-white hover:scale-110 transition-all"
             onClick={toggleEdit}>
             Edit
           </button>
@@ -105,7 +105,7 @@ function Team(props: {
           <Form className="m-2 inline-flex w-full justify-between rounded bg-white p-5 text-gray-800 shadow-md">
             <Field name="teamName" type="text" />
             <button
-              className="cursor-pointer rounded bg-purple-400 py-0.5 px-5 text-gray-800 shadow-md"
+              className="cursor-pointer rounded bg-purple-400 py-0.5 px-5 text-gray-800 shadow-md hover:bg-purple-600 hover:text-white hover:scale-110 transition-all"
               type="submit">
               Save
             </button>

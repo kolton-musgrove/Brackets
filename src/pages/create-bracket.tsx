@@ -89,7 +89,7 @@ export function CreateBracket() {
             ))}
             <div className="mb-5 inline-flex">
               <button
-                className="rounded-l bg-gray-300 py-2 px-4 font-bold text-gray-800 hover:bg-gray-400"
+                className="rounded-l bg-gray-300 py-2 px-4 font-bold text-gray-800 hover:bg-gray-400 hover:-translate-y-2 transition-all"
                 onClick={() => {
                   if (teamCount > 2) setTeamCount(teamCount - 1)
                 }}
@@ -97,7 +97,7 @@ export function CreateBracket() {
                 Remove Team
               </button>
               <button
-                className="rounded-r bg-gray-300 py-2 px-4 font-bold text-gray-800 hover:bg-gray-400"
+                className="rounded-r bg-gray-300 py-2 px-4 font-bold text-gray-800 hover:bg-gray-400 hover:-translate-y-2 transition-all"
                 onClick={() => {
                   if (teamCount < 16) setTeamCount(teamCount + 1)
                 }}
@@ -106,9 +106,9 @@ export function CreateBracket() {
               </button>
             </div>
             <button
-              className="group relative inline-flex cursor-pointer items-center overflow-hidden rounded-full border-2 border-indigo-500 px-12 py-3 text-lg font-medium text-indigo-500 hover:bg-gray-50 hover:text-white"
+              className="group relative inline-flex cursor-pointer items-center overflow-hidden rounded-full border-2 border-purple-400 px-12 py-3 text-lg font-medium text-purple-400 hover:bg-gray-50 hover:text-white hover:translate-y-2 transition-all"
               onClick={onSubmit}>
-              <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-indigo-500 opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
+              <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-purple-400 opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
               <span className="ease absolute right-0 flex h-10 w-10 translate-x-full transform items-center justify-start duration-300 group-hover:translate-x-0">
                 <svg
                   className="h-5 w-5"

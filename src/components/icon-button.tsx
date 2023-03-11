@@ -19,24 +19,24 @@ export function IconButton(props: any) {
   switch (props.icon) {
     case "plus":
       icon = (
-        <AiFillPlusCircle className="h-8 w-8 hover:scale-125 hover:text-gray-200" />
+        <AiFillPlusCircle className="h-8 w-8 hover:scale-125 hover:text-gray-300 transition-all" />
       )
       break
 
     case "share":
-      icon = <BsFillShareFill className="h-8 w-8" />
+      icon = <BsFillShareFill className="h-8 w-8 hover:scale-125 hover:text-gray-300 transition-all" />
       break
 
     case "back":
-      icon = <BiArrowBack className="h-8 w-8" />
+      icon = <BiArrowBack className="h-8 w-8 hover:scale-125 hover:text-gray-300 transition-all" />
       break
 
     case "home":
-      icon = <HiHome className="white h-8 w-8" />
+      icon = <HiHome className="white h-8 w-8 hover:scale-125 hover:text-gray-300 transition-all" />
       break
 
     case "play":
-      icon = <BsFillPlayFill className="white h-8 w-8" />
+      icon = <BsFillPlayFill className="white h-8 w-8 hover:scale-125 hover:text-gray-300 transition-all" />
       break
   }
 
