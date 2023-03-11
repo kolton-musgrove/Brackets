@@ -170,7 +170,7 @@ export function Bracket() {
                     navigate(`/brackets/${id}/${index}`)
                   }
                 }}
-                className="m-2 rounded-full bg-blue-500 py-2 px-4 font-bold text-white hover:bg-blue-700">
+                className="m-2 rounded-full bg-purple-400 py-2 px-4 font-bold text-gray-800 shadow-md hover:bg-purple-600 hover:text-white hover:scale-110 transition-all">
                 Round {index}
               </button>
             )

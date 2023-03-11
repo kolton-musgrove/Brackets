@@ -23,7 +23,7 @@ export function Matchup(props: { matchup: MatchupSchema; onChange: Function }) {
   return (
     <div className="flex w-80 flex-col items-center rounded p-5 shadow-md">
       <button
-        className="w-1/2 cursor-pointer rounded  py-0.5 px-5 text-2xl text-gray-800 shadow-md transition-all hover:scale-110"
+        className="w-1/2 cursor-pointer rounded  py-0.5 px-5 text-2xl text-gray-800 shadow-md transition-all hover:scale-110 active:bg-green-600"
         onClick={() => toggleWinningTeam(team1.id)}
         style={{ color: winningTeamId === team1.id ? "green" : "black" }}>
         {team1.name}
@@ -34,7 +34,7 @@ export function Matchup(props: { matchup: MatchupSchema; onChange: Function }) {
       </div>
 
       <button
-        className="w-1/2 cursor-pointer rounded py-0.5 px-5 text-2xl text-gray-800 shadow-md transition-all hover:scale-110"
+        className="w-1/2 cursor-pointer rounded py-0.5 px-5 text-2xl text-gray-800 shadow-md transition-all hover:scale-110 active:bg-green-600"
         onClick={() => toggleWinningTeam(team2.id)}
         style={{ color: winningTeamId === team2.id ? "green" : "black" }}>
         {team2.name}
