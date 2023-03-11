@@ -11,7 +11,7 @@ root.render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/teams/:id" element={<Teams />} />
-        <Route path="/brackets/:id/:round" element={<Bracket />} />
+        <Route path="/brackets/:id/:roundIndex" element={<Bracket />} />
         <Route path="/brackets/create" element={<CreateBracket />} />
       </Routes>
     </Router>

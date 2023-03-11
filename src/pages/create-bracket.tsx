@@ -36,10 +36,12 @@ export function CreateBracket() {
       })
     })
 
-    localStorage.setItem(Bracket.id, JSON.stringify(Bracket))
-    BracketListService.createOrUpdateBracketList(Bracket)
-
-    navigate({ pathname: `/teams/${Bracket.id}` })
+    console.log(Bracket.teams.length)
+    if ([2, 4, 8].includes(Bracket.teams.length)) {
+      localStorage.setItem(Bracket.id, JSON.stringify(Bracket))
+      BracketListService.createOrUpdateBracketList(Bracket)
+      navigate({ pathname: `/teams/${Bracket.id}` })
+    }
   }
 
   return (
@@ -55,13 +57,7 @@ export function CreateBracket() {
       <Formik
         className="flex w-full justify-center"
         initialValues={{ bracketName: "" }}
-        onSubmit={onSubmit}
-        validate={(values: any) => {
-          const errors: any = {}
-          return Object.keys(values).forEach((key: string) => {
-            if (!values[key]) errors[key] = "Required"
-          })
-        }}>
+        onSubmit={onSubmit}>
         <Form className="flex h-full w-full flex-col items-center justify-center text-center">
           <section className="mt-3 w-96">
             <h1 className="w-full text-lg font-bold">Bracket Name</h1>
@@ -89,7 +85,7 @@ export function CreateBracket() {
             ))}
             <div className="mb-5 inline-flex">
               <button
-                className="rounded-l bg-gray-300 py-2 px-4 font-bold text-gray-800 hover:bg-gray-400 hover:-translate-y-2 transition-all"
+                className="rounded-l bg-gray-300 py-2 px-4 font-bold text-gray-800 transition-all hover:-translate-y-2 hover:bg-gray-400"
                 onClick={() => {
                   if (teamCount > 2) setTeamCount(teamCount - 1)
                 }}
@@ -97,7 +93,7 @@ export function CreateBracket() {
                 Remove Team
               </button>
               <button
-                className="rounded-r bg-gray-300 py-2 px-4 font-bold text-gray-800 hover:bg-gray-400 hover:-translate-y-2 transition-all"
+                className="rounded-r bg-gray-300 py-2 px-4 font-bold text-gray-800 transition-all hover:-translate-y-2 hover:bg-gray-400"
                 onClick={() => {
                   if (teamCount < 16) setTeamCount(teamCount + 1)
                 }}
@@ -106,8 +102,8 @@ export function CreateBracket() {
               </button>
             </div>
             <button
-              className="group relative inline-flex cursor-pointer items-center overflow-hidden rounded-full border-2 border-purple-400 px-12 py-3 text-lg font-medium text-purple-400 hover:bg-gray-50 hover:text-white hover:translate-y-2 transition-all"
-              onClick={onSubmit}>
+              className="group relative inline-flex cursor-pointer items-center overflow-hidden rounded-full border-2 border-purple-400 px-12 py-3 text-lg font-medium text-purple-400 transition-all hover:translate-y-2 hover:bg-gray-50 hover:text-white"
+              type="submit">
               <span className="duration-400 ease absolute left-0 top-1/2 block h-0 w-full bg-purple-400 opacity-100 transition-all group-hover:top-0 group-hover:h-full"></span>
               <span className="ease absolute right-0 flex h-10 w-10 translate-x-full transform items-center justify-start duration-300 group-hover:translate-x-0">
                 <svg
